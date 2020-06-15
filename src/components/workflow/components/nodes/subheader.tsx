@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-const Component = ({ handleChange, selectedWorkFlow,id, dispatch }: any) => {
+const Component = ({ handleChange, selectedWorkFlow,id, dispatch,workflowDisabled }: any) => {
     const classes = useStyles();
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const [title, setTitle] = React.useState<string[]>(selectedWorkFlow.name);
@@ -145,7 +145,7 @@ const Component = ({ handleChange, selectedWorkFlow,id, dispatch }: any) => {
                                 <InputAdornment position="start">
                                     <DeleteIcon />
                                 </InputAdornment>
-                                Delete
+                                Delete {workflowDisabled}
                             </Button>
 
                             <Button
@@ -157,7 +157,7 @@ const Component = ({ handleChange, selectedWorkFlow,id, dispatch }: any) => {
                                 <InputAdornment position="start">
                                     <AddIcon />
                                 </InputAdornment>
-                                Add Note
+                                {!workflowDisabled?"Add Note":"Close"}    
                             </Button>
 
                             <Button

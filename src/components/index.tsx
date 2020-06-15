@@ -8,8 +8,7 @@ import PrivateRoute from './private';
 import Header from './common/header'
 import Connect from '../config/connect';
 
-const Main: React.FunctionComponent<any> = (props) => {
-  const { data:{loggedIn} } = props
+const Main: React.FunctionComponent<any> = (loggedIn) => {
   return (
     <Fragment>
       <Header isAuthenticated={loggedIn} ></Header>
@@ -22,9 +21,10 @@ const Main: React.FunctionComponent<any> = (props) => {
 
   );
 }
-const mapStateToProps = (props: any) => {
+const mapStateToProps = ({data}:any,props: any) => {
   return {
-    ...props
+    ...props,
+    data
   };
 };
 

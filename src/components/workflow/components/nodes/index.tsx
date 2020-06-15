@@ -45,8 +45,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const Component = ({selectedNode,selectedWorkFlow,dispatch}:any) => {
     const classes = useStyles();
     const { id } = useParams();
-    const history = useHistory(); 
-    const [workflowDisabled, setworkflowDisabled] = useState(false);
+    const [workflowDisabled, setworkflowDisabled] = useState(true);
     
   
     const changeStatus = (data:any) => {
@@ -65,10 +64,6 @@ const Component = ({selectedNode,selectedWorkFlow,dispatch}:any) => {
     dispatch(selectNodes(id))
   },[]);
 
-  useEffect(() => {
-    if(!selectedWorkFlow.name)
-        history.push("/")
-  },[selectedWorkFlow]);
     const handleChange = () => {
         setworkflowDisabled(!workflowDisabled)
     }
@@ -81,7 +76,7 @@ const Component = ({selectedNode,selectedWorkFlow,dispatch}:any) => {
         <React.Fragment>
             <SubHeader title={selectedWorkFlow.name} handleChange={handleChange} id={id}></SubHeader>
             <div className={classes.griddetails}>
-                {workflowDisabled?<EditNode creatWorkflow={creatWorkflow} id={id}></EditNode>:""}
+                {workflowDisabled?<EditNode creatWorkflow={creatWorkflow} id={id} workflowDisabled={workflowDisabled}></EditNode>:""}
                 {selectedNode.map((val: any) => <AddNodes key={val.id} data={val} changeStatus={changeStatus}></AddNodes>)}
             </div>
         </React.Fragment>
