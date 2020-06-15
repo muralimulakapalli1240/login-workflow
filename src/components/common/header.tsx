@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     alignright: {
       float: "right",
-      width: 300,
+      width: 500,
       textAlign:"right"
     },
     btngreen: {
@@ -60,7 +60,7 @@ function ButtonAppBar({isAuthenticated,selectedWorkFlow,dispatch}:any) {
               color="secondary"
               className={classes.btngreen}
               onClick={logout}>
-              Logout {selectedWorkFlow.name}
+              Logout
             </Button>) : ""}
             {selectedWorkFlow.id && isAuthenticated ? (
               <Button

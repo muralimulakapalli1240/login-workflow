@@ -145,7 +145,7 @@ const Component = ({ handleChange, selectedWorkFlow,id, dispatch,workflowDisable
                                 <InputAdornment position="start">
                                     <DeleteIcon />
                                 </InputAdornment>
-                                Delete {workflowDisabled}
+                                Delete
                             </Button>
 
                             <Button

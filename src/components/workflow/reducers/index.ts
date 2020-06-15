@@ -50,9 +50,15 @@ export const workflowReducer = (state: any = WorkFlowStore, action: any) => {
             const data = state.workflow.filter((flow: any) =>
                 flow.id === action.id
             )
+            if(data.length>0)
             return {
-                ...state, "selectedWorkFlow": { ...state.selectedWorkFlow, ...data[0] }
+                ...state, "selectedWorkFlow": { ...state.selectedWorkFlow, ...data[0],error:false }
             }
+            else
+            return {
+                ...state, "selectedWorkFlow": { ...state.selectedWorkFlow, error:true }
+            }
+            
         }
         case workActionTypes.WORKFLOW_SELECTED_REMOVE: {
 

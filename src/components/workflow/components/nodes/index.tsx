@@ -45,8 +45,13 @@ const useStyles = makeStyles((theme: Theme) =>
 const Component = ({selectedNode,selectedWorkFlow,dispatch}:any) => {
     const classes = useStyles();
     const { id } = useParams();
+    const history = useHistory();
     const [workflowDisabled, setworkflowDisabled] = useState(true);
     
+  useEffect(() => {
+    if(selectedWorkFlow.error)
+        history.push("/")
+  },[selectedWorkFlow]);
   
     const changeStatus = (data:any) => {
       let status="";
